@@ -5,5 +5,7 @@ export const ICustomerRepositoryToken = Symbol('ICustomerRepositoryToken');
 export interface ICustomerRepository {
   create(custumer: Customer): Promise<Customer>;
 
-  findOne(id: string): Promise<Customer>;
+  findOne(id: string): Promise<Customer | null>;
+
+  updateOne(id: string): Promise<Customer>;
 }
