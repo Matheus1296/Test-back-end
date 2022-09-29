@@ -48,4 +48,20 @@ describe('Customer', () => {
       expect(() => customer.getValue()).toThrow();
     });
   });
+
+  describe('.document', () => {
+    it('should throw error if it is not a number.', () => {
+      customer.setField('document', '123456789' as unknown as number);
+
+      const validationErrors = customer.validate();
+      expect(validationErrors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            property: 'document',
+          }),
+        ]),
+      );
+      expect(() => customer.getValue()).toThrow();
+    });
+  });
 });
