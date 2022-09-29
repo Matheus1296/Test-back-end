@@ -27,7 +27,10 @@ describe('CreateCustomerUseCase', () => {
       name: 'test test test',
     };
     const id = uuid.v4();
-    await CreateCustomerUseCase.execute({ ...request, id });
+    const createCustomerUseCase = new CreateCustomerUseCase(
+      repositorie.customer,
+    );
+    await createCustomerUseCase.run({ ...request, id });
 
     expect(repositorie.customer.create).toHaveBeenCalledWith(
       expect.any(Customer),
