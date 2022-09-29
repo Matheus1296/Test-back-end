@@ -1,4 +1,4 @@
-import { IsNumber, IsString, IsUUID, Length } from 'class-validator';
+import { IsInt, IsString, IsUUID, Length } from 'class-validator';
 import { Entity } from './Entity';
 import { plainToClass } from 'class-transformer';
 
@@ -13,7 +13,7 @@ export class CustomerProps {
   @IsUUID()
   id: string;
 
-  @IsNumber()
+  @IsInt()
   document: number;
 
   @IsString()
