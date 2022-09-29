@@ -32,7 +32,9 @@ export abstract class Entity<P extends Object> {
       this.props[field] = newValue;
       this.validate();
     } else {
-      throw new Error(`Property ${field} is protected and cannot be changed.`);
+      throw new Error(
+        `Property ${String(field)} is protected and cannot be changed.`,
+      );
     }
   }
 
