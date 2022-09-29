@@ -33,5 +33,19 @@ describe('Customer', () => {
       );
       expect(() => customer.getValue()).toThrow();
     });
+
+    it('should give an error if it is an empty string', () => {
+      customer.setField('name', '');
+
+      const validationErrors = customer.validate();
+      expect(validationErrors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            property: 'name',
+          }),
+        ]),
+      );
+      expect(() => customer.getValue()).toThrow();
+    });
   });
 });
