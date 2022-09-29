@@ -12,19 +12,6 @@ export class CreateCustomerUseCase {
     private readonly customerRepository: ICustomerRepository,
   ) {}
 
-  async run(request: {
-    document: number;
-    name: string;
-    id: string;
-  }): Promise<Customer> {
-    const customer = new Customer({
-      id: request.id,
-      document: request.document,
-      name: request.name,
-    });
-    return await this.customerRepository.create(customer);
-  }
-
   static generateNewCustomer({
     id,
     document,
@@ -39,5 +26,14 @@ export class CreateCustomerUseCase {
       name,
       document,
     });
+  }
+
+  async run(request: {
+    document: number;
+    name: string;
+    id: string;
+  }): Promise<Customer> {
+    const customer = CreateCustomerUseCase.generateNewCustomer(request);
+    return await this.customerRepository.create(customer);
   }
 }
