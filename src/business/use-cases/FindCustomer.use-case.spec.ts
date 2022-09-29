@@ -15,6 +15,7 @@ describe('FindCustomerUseCase', () => {
     const customerRepository: ICustomerRepository = {
       create: jest.fn(),
       findOne: jest.fn().mockImplementation(() => customerMock),
+      updateOne: jest.fn(),
     };
 
     const request: { id: string } = {
