@@ -7,5 +7,5 @@ export interface ICustomerRepository {
 
   findOne(id: string): Promise<Customer | null>;
 
-  updateOne(id: string): Promise<Customer>;
+  updateOne(customer: Customer): Promise<Customer>;
 }
